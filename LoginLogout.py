@@ -57,7 +57,7 @@ class LoginLogout(unittest.TestCase):
         pass
 
     # step2:
-    # Input username: web_user and password:
+    # Input username:
     def login(self):
         # username
         username = self.driver.find_element_by_xpath("/html/body/form/div[3]/table/tbody/tr/td/div/div[1]/input")
