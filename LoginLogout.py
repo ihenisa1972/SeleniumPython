@@ -48,7 +48,7 @@ class LoginLogout(unittest.TestCase):
 
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
-        self.driver.get("https://uat-bioinventory.biostorage.com")
+        self.driver.get(EnvironmentSettings.web_site_address)
 
     # step1:
     # Navigate to https://uat-bioinventory.biostorage.com
