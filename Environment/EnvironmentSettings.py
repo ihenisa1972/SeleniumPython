@@ -1,7 +1,7 @@
 html_report_dir = "C:\\Users\\ian\\Selenium\\SeleniumPython\\HTML_Reports"
 xml_report_dir = "C:\\Users\\ian\\Selenium\\SeleniumPython\\XML_Reports"
 validation_screenshots = "C:\\Users\\ian\\Selenium\\SeleniumPython\\screenshots"
-web_site_address = ""
+web_site_address = "https://discover.freshthyme.com/"
 fake_user_name = "foo"
 fake_password = "fake"
 user_name = ""
