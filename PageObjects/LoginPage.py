@@ -38,8 +38,29 @@ class LoginPage(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.get(EnvironmentSettings.web_site_address)
 
+    def set_location(self):
+        try:
+            location = self.driver.find_element_by_xpath(
+                "/html/body/div[1]/div[1]/div[1]/div[2]/div/div[2]/div/div/div[1]/unata-storeid-label/a/span"
+            )
+            location.click()
+
+            zip_code = self.driver.find_element_by_id("shopping-selector-search-cities")
+            zip_code.send_keys("46227")
+            zip_code.send_keys(u'\ue007')
+
+            select_address = self.driver.find_element_by_id("shopping-selector-update-home-store-120-instore")
+            select_address.click()
+        except NoSuchElementException:
+            pass
+
     def login(self):
         pass
+
+    # Test assertions below
+
+    def test_set_location(self):
+        self.set_location()
 
     def test_login(self):
         pass
