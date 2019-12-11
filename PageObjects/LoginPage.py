@@ -1,5 +1,8 @@
 import os
-
+from requests import get
+from requests.exceptions import RequestException
+from contextlib import closing
+from bs4 import BeautifulSoup
 import HtmlTestRunner
 from datetime import datetime
 import unittest
@@ -16,7 +19,7 @@ screenshot_path = EnvironmentSettings.validation_screenshots + workingdir
 os.mkdir(EnvironmentSettings.validation_screenshots + workingdir)
 
 
-class LoginPage(unittest.TestCase):
+class ParentClass(unittest.TestCase):
     def setUp(self):
         # load specific driver
         # Chrome and Firefox drivers supported so far
@@ -36,34 +39,48 @@ class LoginPage(unittest.TestCase):
 
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
-        self.driver.get(EnvironmentSettings.web_site_address)
+        self.driver.get(EnvironmentSettings.url)
 
-    def set_location(self):
+    def select_nfl(self):
         try:
-            location = self.driver.find_element_by_xpath(
-                "/html/body/div[1]/div[1]/div[1]/div[2]/div/div[2]/div/div/div[1]/unata-storeid-label/a/span"
+            self.driver.find_element_by_xpath("/html/body/div[6]/div[2]/header/nav[1]/ul/li[1]/a/span/span[1]")
+            self.driver.find_element_by_xpath(
+                "/html/body/div[6]/div[2]/header/nav[1]/ul/li[1]/div/ul[1]/li[2]/a/span/span[1]"
             )
-            location.click()
-
-            zip_code = self.driver.find_element_by_id("shopping-selector-search-cities")
-            zip_code.send_keys("46227")
-            zip_code.send_keys(u'\ue007')
-
-            select_address = self.driver.find_element_by_id("shopping-selector-update-home-store-120-instore")
-            select_address.click()
         except NoSuchElementException:
             pass
 
-    def login(self):
-        pass
+    def select_nba(self):
+        try:
+           pass
+        except NoSuchElementException:
+            pass
+
+    def select_ncaaf(self):
+        try:
+           pass
+        except NoSuchElementException:
+            pass
+
+    def select_ncaam(self):
+        try:
+           pass
+        except NoSuchElementException:
+            pass
 
     # Test assertions below
 
-    def test_set_location(self):
-        self.set_location()
+    def test_select_nfl(self):
+        self.select_nfl()
 
-    def test_login(self):
-        pass
+    '''def test_select_nba(self):
+        self.select_nba()
+
+    def test_select_ncaaf(self):
+        self.select.ncaaf()
+
+    def test_select_ncaam(self):
+        self.select_ncaam()'''
 
     def tearDown(self):
         # clean up
@@ -73,3 +90,4 @@ class LoginPage(unittest.TestCase):
 if __name__ == '__main__':
     # Run all test functions with HtmlTestRunner to generate html test report.
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output=EnvironmentSettings.html_report_dir))
+
